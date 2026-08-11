@@ -5,6 +5,9 @@ const client = new Client({
 });
 
 client.once("ready", () => {
+   if (message.content === "!ping") {
+    message.reply("Pong!");
+  }
   console.log("Bot aktif!");
 });
 
