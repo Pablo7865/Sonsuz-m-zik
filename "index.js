@@ -1,14 +1,21 @@
 const { Client, GatewayIntentBits } = require("discord.js");
 
 const client = new Client({
-  intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildVoiceStates]
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.MessageContent
+  ]
 });
 
 client.once("ready", () => {
-   if (message.content === "!ping") {
-    message.reply("Pong!");
-  }
   console.log("Bot aktif!");
 });
 
- client.login(process.env.TOKEN)
+client.on("messageCreate", message => {
+  if (message.content === "!ping") {
+    message.reply("Pong!");
+  }
+});
+
+client.login(process.env.TOKEN);
